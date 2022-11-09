@@ -15,8 +15,9 @@ import lombok.NoArgsConstructor;
 @Entity
 public class user {
 	
+	// Here we create user model
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)     
 	private int userId;
 	private String userName;
 	private String userPassword;
@@ -24,6 +25,8 @@ public class user {
 	private String userEmail;
 	private String userRole;
 	private int userFee;
+	
+	// Here we perform many to one relation between room and user
 	@ManyToOne
 	private room userRoom;
 	

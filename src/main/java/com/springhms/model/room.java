@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 @Entity
 public class room {
 	
+	// Here we create room model 
 	@Id
 	private int roomId;
 	private String roomName;

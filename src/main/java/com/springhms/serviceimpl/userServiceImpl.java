@@ -15,23 +15,26 @@ import com.springhms.util.valueMapper;
 @Service
 public class userServiceImpl implements userService {
 
+	// Here we implements all methods which is present in userService interface
+	// Here we performed dependency injection 
     @Autowired
 	private userRepository userrepo;  
 	
-	
+    // This is method for add user 
 	@Override
 	public user addUser(userDto u1) {
 		user u2=valueMapper.convertoUser(u1);
 		return userrepo.save(u2);
-		
 	}
 
+	// This is method for get user 
 	@Override
 	public List<user> getUser() {
 		return userrepo.findAll();
 		
 	}
 
+	// This is method for update user 
 	@Override
 	public user updateUser(userDto u1) {
 		user u2=valueMapper.convertoUser(u1);
@@ -39,6 +42,7 @@ public class userServiceImpl implements userService {
 		
 	}
 
+	// This is method for delete user 
 	@Override
 	public String deleteUser(int userid) throws globalException {
 		user u2=userrepo.findByUserId(userid);
@@ -51,6 +55,7 @@ public class userServiceImpl implements userService {
 		}
 	}
 
+	// This is method for update phone number of user 
 	@Override
 	public String updatePhone(int userid, String phone) throws globalException {
 		int st=userrepo.updatePhone(userid, phone);
@@ -62,6 +67,7 @@ public class userServiceImpl implements userService {
 		}
 	}
 
+	// This is method for all room to the user
 	@Override
 	public String allotRoom(int userid, int roomid) throws globalException {
 		int st=userrepo.allotRoom(userid, roomid);
@@ -73,28 +79,16 @@ public class userServiceImpl implements userService {
 		}
 	}
 
+	// This is method for update user's fee  
 	@Override
-	public String login(int userid, String userName, String userPassword) throws globalException {
-	    
-		user u1= userrepo.findByUserId(userid);
-		if(u1!=null) {
-			
-			if(u1.getUserName().equals(userName)) {
-				
-				if(u1.getUserPassword().equals(userPassword)) {
-					return "Login Successfull MR. " + u1.getUserName();
-				}
-				else
-					throw new globalException("Password not mattched ");
-				
-			}
-			else
-				throw new globalException("userName not found ");
-			
+	public String updateFee(int userid, int userfee) throws globalException {
+		int st=userrepo.updateFee(userid, userfee);
+		if(st==1) {
+			return "Fee Updated to "+userid;
 		}
-		else
-			  throw new globalException("user not found ");
-		
+		else {
+			throw new globalException("something went wrong");
+		}
 	}
 
 }

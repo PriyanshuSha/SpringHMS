@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class userDto {
 	
-
+    // Here we perform validation for user model 
 	@NotNull(message="user id cannot be null")
 	private int userId;
 	

@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class roomDto {
 	
+	// Here we perform validation for room model 
 	@NotNull(message="room id cannot be null")
 	private int roomId;
 	

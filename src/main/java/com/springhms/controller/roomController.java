@@ -22,32 +22,33 @@ import com.springhms.serviceimpl.roomServiceImpl;
 @RequestMapping("/room")
 public class roomController {
 	
-
+	//Here we control and handle all rest API 
+    //Here we perform dependency injection 
 	@Autowired
 	private roomServiceImpl service;
 	
+	//Here we deal with rest API of get room
 	@GetMapping("/get")
 	public ResponseEntity<List<room>> getRooms(){
 		return new ResponseEntity<>(service.getRoom(),HttpStatus.OK);	
 	}
 	
+	//Here we deal with rest API of add room
 	@PostMapping("/add")
 	public ResponseEntity<room> addRoom(@RequestBody @Valid roomDto r1){
-		
 		return new ResponseEntity<>(service.addRoom(r1),HttpStatus.ACCEPTED);
 		
 	}
-	
+	//Here we deal with rest API of update room 
 	@PutMapping("/update")
 	public ResponseEntity<room> updateRoom(@RequestBody @Valid roomDto r1){
-		
 		return new ResponseEntity<>(service.updateRoom(r1),HttpStatus.ACCEPTED);
 		
 	}
 	
+	//Here we deal with rest API of delete room 
 	@DeleteMapping("/delete/{roomid}")
 	public ResponseEntity<String> deleteRoom(@PathVariable int roomid) throws globalException{
-		
 		String st=service.deleteRoom(roomid);
 		if(st!=null) {
 			return new ResponseEntity<>(st,HttpStatus.OK);
@@ -55,7 +56,6 @@ public class roomController {
 		else {
 			return new ResponseEntity<>(st,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		
 	}
 
 }

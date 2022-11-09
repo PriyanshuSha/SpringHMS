@@ -6,7 +6,7 @@ import com.springhms.exception.globalException;
 import com.springhms.model.room;
 
 public interface roomService {
-    
+    // Here we declared all method which is use in roomServiceImpl class 
 	public room addRoom(roomDto r1);
 	public List<room> getRoom();
 	public room updateRoom(roomDto r1);

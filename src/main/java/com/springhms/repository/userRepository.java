@@ -10,7 +10,7 @@ import com.springhms.model.user;
 @Repository
 public interface userRepository extends JpaRepository<user,Integer> {
 
-
+    // It is a user repository here we perform all database related operations 
 	@Transactional 
 	@Modifying
 	@Query(value="update user set user_phone=:userphone where user_id=:userid")
@@ -24,4 +24,13 @@ public interface userRepository extends JpaRepository<user,Integer> {
 	@Query(value="select * from user where user_id=?1",nativeQuery=true)
 	user findByUserId(int userid);
 	
+	@Transactional 
+	@Modifying
+	@Query(value="update user set user_fee=:userFee where user_id=:userid")
+	int updateFee(int userid,int userFee);
+     
+	@Query(value="select * from user where user_name=?1",nativeQuery=true)
+	user findByUserName(String username);
+
 }
+

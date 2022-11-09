@@ -7,6 +7,7 @@ import com.springhms.model.user;
 
 public class valueMapper {
 	
+	// Here we convert userDTo object into user object
 	public static user convertoUser(userDto u1) {
 		user u2=new user(u1.getUserId(), u1.getUserName(),u1.getUserPassword(),u1.getUserPhone(),u1.getUserEmail(),u1.getUserRole(),u1.getUserFee(),u1.getUserRoom());
 		return u2;	
